@@ -111,7 +111,7 @@ void hot_deinit(void) {
 #define REOPEN \
     static void * handle = NULL; \
     \
-    if (!has_changed()) { return; } \
+    if (handle && !has_changed()) { return; } \
     \
     if (handle) { dlclose(handle); } \
     handle = dlopen(SO_NAME(__FILE__), RTLD_NOW); \

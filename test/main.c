@@ -16,7 +16,11 @@ void hot_rebind(void) {
 }
 
 signed main(void) {
+    hot_init(SO_NAME(__FILE__));
+
     while (true) {
+        hot_rebind();
+
         h();
         f();
         g();
