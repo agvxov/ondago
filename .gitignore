@@ -1,0 +1,6 @@
+.gdb_history
+*.so
+*.out
+*-host*
+*-patched*
+*.cocci_res
