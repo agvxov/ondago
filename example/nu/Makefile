@@ -1,8 +1,10 @@
+all: host so
+
 host: patch main.c
 	gcc -o main-host.out main-host.c -std=c23
 
 patch: stub.cocci
-	spatch --sp-file stub.cocci main.c -o main-host.c --debug
+	spatch --sp-file stub.cocci main.c -o main-host.c
 
 so: main.c
 	gcc -fPIC -shared -o libmain-module.so.swp main.c -std=c23 -ggdb

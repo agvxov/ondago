@@ -8,7 +8,7 @@
 #define STRINGIFY(x) # x
 
 void h(void) {
-    puts("Evil.");
+    puts("Good.");
 }
 
 void f(void) {

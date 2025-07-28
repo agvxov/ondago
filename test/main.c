@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include "h.h"
+#include "z.h"
 
 #include "hot-reload.h"
+
+extern void z(void);
 
 void f(void) {
     puts("Good.");
@@ -24,6 +27,7 @@ signed main(void) {
         h();
         f();
         g();
+        z();
     }
 
     return 0;

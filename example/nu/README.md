@@ -4,7 +4,7 @@ So, we have new requirements:
 * Automate the transformation.
 * Keep the project structure intact and thereby nice and tidy.
 
-Our ideal situation is one where compile out project twice:
+Our ideal situation is one where we compile out project twice:
 1. Where everything is only declared, except for `main()` (*Host*).
 2. Where everything is defined (*Module*).
 

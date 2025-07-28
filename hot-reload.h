@@ -100,7 +100,7 @@ void hot_deinit(void) {
 // --- These macros are used for generting the body of reload()
 
 /* We need to generate string literals to be used in dlsym() calls.
- * Coccinelle is either in capable of generating parameterised string literals,
+ * Coccinelle is either incapable of generating parameterised string literals,
  *  or I'm simply bad with her.
  * Regardless this is perfectly fine, because we got the preprocessor.
  */
