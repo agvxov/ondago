@@ -1,4 +1,7 @@
-# Hot reload
+# Ondago
+> Reload while sprinting.
+
+Non-intrusive C/C++ hot-reloading toolchain.
 
 ## Problem statement
 Please read the following documents in the order they are provided.

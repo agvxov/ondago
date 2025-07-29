@@ -6,7 +6,7 @@
  */
 #ifndef ECHO_DL_ERROR
 #define ECHO_DL_ERROR(x) \
-    fprintf(stderr, "hot-reload error: %s\n", x)
+    fprintf(stderr, "ondago error: %s\n", x)
 #endif
 
 // NOTE: thos is a copy of nargs.h

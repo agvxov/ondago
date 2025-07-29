@@ -1,9 +1,9 @@
 #ifndef H_H
 #define H_H
 
-//static // XXX
+static
 void h(void) {
-    puts("Good.");
+    puts("Evil.");
 }
 
 #endif

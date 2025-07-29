@@ -1,29 +1,35 @@
 # NOTE: you might want to invest in a Makefile module
 
-HOT_INC.d := $(realpath ../)
-HOT_BIN := ../hot-reload.sh
+CFLAGS += -std=c23 -ggdb
+OUT := main.out
 
-CFLAGS := -std=c23 -I${HOT_INC.d} -ggdb
+HOST.d   := $${TMPDIR:-/tmp}/ondago-host-tree
+MODULE.d := $${TMPDIR:-/tmp}/ondago-module-tree
+
+SOURCE := main.c z.c
+SOURCE.H := $(addprefix ${HOST.d}/,${SOURCE})
+SOURCE.M := $(addprefix ${MODULE.d}/,${SOURCE})
 
 main:
-	gcc ${CFLAGS} -o main.out main.c z.c
+	gcc ${CFLAGS} -o ${OUT} ${SOURCE}
 
 host:
-	-rm -frfr ../host-tree ./host-tree
-	cp -r ./ ../host-tree
-	mv ../host-tree .
-	${HOT_BIN} host-tree/main.c
-	cd host-tree/; \
-	gcc ${CFLAGS} -o ../main-host.out main.c
+	-rm -r ${HOST.d}
+	cp -r ./ ${HOST.d}/
+	ondago-spatch-wrapper.sh host ${SOURCE.H}
+	cd ${HOST.d}/; \
+		gcc ${CFLAGS} -o ${OUT} main.c
+	mv ${HOST.d}/${OUT} .
 
 module:
-	gcc ${CFLAGS} -fPIC -shared -o libmain.c.so.swp main.c z.c
-	mv libmain.c.so.swp libmain.c.so
+	rsync -av --update ./ ${MODULE.d}/
+	ondago-spatch-wrapper.sh module ${SOURCE.M}
+	gcc ${CFLAGS} -fPIC -shared -o ${MODULE.d}/libmain.c.so ${SOURCE.M}
+	mv ${MODULE.d}/libmain.c.so .
 
 hot: clean host module
 
 clean:
-	-rm -frfr ../host-tree ./host-tree
-	-rm *-host.c
+	-rm -r ${HOST.d} ${MODULE.d}
 	-rm *.out
 	-rm *.so
