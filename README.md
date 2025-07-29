@@ -11,8 +11,9 @@ Pay attention to the contents of their directories too.
 * [example/nu/README.md](example/nu/README.md)
 
 ## Tooling
-| Tool              | Description |
-| :---------------: | :---------: |
-| hot-reaload.cocci | Main metaprogramming script. |
-| hot-reaload.sh    | Wrapper script around Coccinelle/hot-reaload.cocci |
-| hot-reload.h      | C/C++ header for the reload logic. |
+| Tool                     | Description |
+| :----------------------: | :---------: |
+| ondago-host.cocci        | Host metaprogramming script. Stubs everything. |
+| ondago-module.cocci      | Module metaprogramming script. Removes problematic function specifiers. |
+| ondago-spatch-wrapper.sh | Wrapper script around our metaprogramming scripts. |
+| ondago.h                 | C/C++ header for the reload logic. |
