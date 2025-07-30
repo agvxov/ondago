@@ -26,7 +26,7 @@ Pay attention to the contents of their directories too.
 
 ## Tooling
 | Tool                     | Description |
-| :----------------------: | :---------: |
+| :----------------------- | :---------- |
 | ondago-host.cocci        | Host metaprogramming script. Stubs everything. |
 | ondago-module.cocci      | Module metaprogramming script. Removes problematic function specifiers. |
 | ondago-spatch-wrapper.sh | Wrapper script around our metaprogramming scripts. |
