@@ -1,7 +1,5 @@
 .gdb_history
 *.so
 *.out
-*-host*
-*host-*
 *-patched*
 *.cocci_res
